@@ -1,0 +1,24 @@
+@import './typography';
+
+.btn {
+  font-family: $primary-font;
+      font-size: 1rem;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  text-transform: uppercase;
+  padding: .5em 0;
+}
+
+.caret {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-left: .3em;
+  vertical-align: middle;
+  border-top: .4em dashed;
+  border-right: .4em solid transparent;
+  border-left: .4em solid transparent;
+}
