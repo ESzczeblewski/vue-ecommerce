@@ -1,9 +1,10 @@
+/* eslint-disable global-require */
 /* eslint-disable import/prefer-default-export */
 export const storeProducts = [
   {
     id: 1,
     title: 'Textured Ribbed Bomber Jacket',
-    img: '@/assets/imgs/men/m-jacket1-big',
+    img: require('@/assets/imgs/men/m-jacket1-big.jpg'),
     price: 40.00,
     sex: 'm',
     category: 'Jackets',
@@ -17,7 +18,7 @@ export const storeProducts = [
   {
     id: 2,
     title: 'Nylon Biker Jacket',
-    img: '@/assets/imgs/men/m-jacket2-big',
+    img: require('@/assets/imgs/men/m-jacket2-big.jpg'),
     price: 58.00,
     sex: 'm',
     category: 'Jackets',
@@ -31,7 +32,7 @@ export const storeProducts = [
   {
     id: 3,
     title: 'Jacket J-Eiko Nylon',
-    img: '@/assets/imgs/men/m-jacket3-big',
+    img: require('@/assets/imgs/men/m-jacket3-big.jpg'),
     price: 175.00,
     sex: 'm',
     category: 'Jackets',
@@ -45,7 +46,7 @@ export const storeProducts = [
   {
     id: 4,
     title: 'Longline Sleeveless T-Shirt With Dropped Armhole And Print',
-    img: '@/assets/imgs/men/m-tshirt1-big',
+    img: require('@/assets/imgs/men/m-tshirt1-big.jpg'),
     price: 24.00,
     sex: 'm',
     category: 'T-Shirts',
@@ -59,7 +60,7 @@ export const storeProducts = [
   {
     id: 5,
     title: 'Longline T-Shirt With Aztec Yoke Print In Relaxed Skater Fit',
-    img: '@/assets/imgs/men/m-tshirt2-big',
+    img: require('@/assets/imgs/men/m-tshirt2-big.jpg'),
     price: 55.00,
     sex: 'm',
     category: 'T-Shirts',
@@ -73,7 +74,7 @@ export const storeProducts = [
   {
     id: 6,
     title: 'Sleeveless T-Shirt With Extreme Dropped Armholes And Applique',
-    img: '@/assets/imgs/men/m-tshirt3-big',
+    img: require('@/assets/imgs/men/m-tshirt3-big.jpg'),
     price: 60.00,
     sex: 'm',
     category: 'T-Shirts',
@@ -87,7 +88,7 @@ export const storeProducts = [
   {
     id: 7,
     title: 'Extreme Super Skinny Jeans With Knee Rips',
-    img: '@/assets/imgs/men/m-jeans1-big',
+    img: require('@/assets/imgs/men/m-jeans1-big.jpg'),
     price: 20.00,
     sex: 'm',
     category: 'Jeans',
@@ -101,7 +102,7 @@ export const storeProducts = [
   {
     id: 8,
     title: 'Hyperflex Anbass Slim Fit Comfort Ultra Stretch Blue Wash',
-    img: '@/assets/imgs/men/m-jeans2-big',
+    img: require('@/assets/imgs/men/m-jeans2-big.jpg'),
     price: 57.00,
     sex: 'm',
     category: 'Jeans',
@@ -115,7 +116,7 @@ export const storeProducts = [
   {
     id: 9,
     title: 'Jeans Arc 3d Slim Fit Colour Denim',
-    img: '@/assets/imgs/men/m-jeans3-big',
+    img: require('@/assets/imgs/men/m-jeans3-big.jpg'),
     price: 70.00,
     sex: 'm',
     category: 'Jeans',
@@ -129,7 +130,7 @@ export const storeProducts = [
   {
     id: 10,
     title: 'Denim Shirt In Check with Short Sleeves',
-    img: '@/assets/imgs/men/m-shirt1-big',
+    img: require('@/assets/imgs/men/m-shirt1-big.jpg'),
     price: 120.00,
     sex: 'm',
     category: 'Shirts',
@@ -143,7 +144,7 @@ export const storeProducts = [
   {
     id: 11,
     title: 'Formal Shirt In Slim Fit',
-    img: '@/assets/imgs/men/m-shirt2-big',
+    img: require('@/assets/imgs/men/m-shirt2-big.jpg'),
     price: 90.00,
     sex: 'm',
     category: 'Shirts',
@@ -157,7 +158,7 @@ export const storeProducts = [
   {
     id: 12,
     title: 'Boat Shoes in Leather',
-    img: '@/assets/imgs/men/m-shoes1-big',
+    img: require('@/assets/imgs/men/m-shoes1-big.jpg'),
     price: 90.00,
     sex: 'm',
     category: 'Shoes',
@@ -171,7 +172,7 @@ export const storeProducts = [
   {
     id: 13,
     title: 'Elephant Print Cami Swing Dress',
-    img: '@/assets/imgs/women/w-dress1-big',
+    img: require('@/assets/imgs/women/w-dress1-big.jpg'),
     price: 90.00,
     sex: 'w',
     category: 'Dresses',
@@ -185,7 +186,7 @@ export const storeProducts = [
   {
     id: 14,
     title: 'Embellished Dress',
-    img: '@/assets/imgs/women/w-dress2-big',
+    img: require('@/assets/imgs/women/w-dress2-big.jpg'),
     price: 70.00,
     sex: 'w',
     category: 'Dresses',
@@ -199,7 +200,7 @@ export const storeProducts = [
   {
     id: 15,
     title: 'Biker Jacket in Wool with Zip Detail',
-    img: '@/assets/imgs/women/w-jacket1-big',
+    img: require('@/assets/imgs/women/w-jacket1-big.jpg'),
     price: 70.00,
     sex: 'w',
     category: 'Jackets',
@@ -213,7 +214,7 @@ export const storeProducts = [
   {
     id: 16,
     title: 'Embellished Dress',
-    img: '@/assets/imgs/women/w-jacket2-big',
+    img: require('@/assets/imgs/women/w-jacket2-big.jpg'),
     price: 150.00,
     sex: 'w',
     category: 'Jackets',
@@ -227,7 +228,7 @@ export const storeProducts = [
   {
     id: 17,
     title: 'Bell Flare Jeans In Clean Black With Thigh Rips',
-    img: '@/assets/imgs/women/w-jeans1-big',
+    img: require('@/assets/imgs/women/w-jeans1-big.jpg'),
     price: 30.00,
     sex: 'w',
     category: 'Jeans',
@@ -241,7 +242,7 @@ export const storeProducts = [
   {
     id: 18,
     title: 'Bell Flare Jeans In Clean Black With Thigh Rips',
-    img: '@/assets/imgs/women/w-jeans2-big',
+    img: require('@/assets/imgs/women/w-jeans2-big.jpg'),
     price: 22.00,
     sex: 'w',
     category: 'Jeans',
