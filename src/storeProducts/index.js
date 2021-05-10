@@ -6,6 +6,7 @@ export const storeProducts = [
     img: '@/assets/imgs/men/m-jacket1-big',
     price: 40.00,
     sex: 'm',
+    category: 'Jackets',
     info: [
       'Ribbed sweat',
       'Baseball collar',
@@ -19,6 +20,7 @@ export const storeProducts = [
     img: '@/assets/imgs/men/m-jacket2-big',
     price: 58.00,
     sex: 'm',
+    category: 'Jackets',
     info: [
       'Smooth woven outer',
       'Stand-up collar',
@@ -32,6 +34,7 @@ export const storeProducts = [
     img: '@/assets/imgs/men/m-jacket3-big',
     price: 175.00,
     sex: 'm',
+    category: 'Jackets',
     info: [
       'Smooth fabric',
       'Stand collar with throat latch',
@@ -45,6 +48,7 @@ export const storeProducts = [
     img: '@/assets/imgs/men/m-tshirt1-big',
     price: 24.00,
     sex: 'm',
+    category: 'T-Shirts',
     info: [
       'Smooth fabric',
       'Stand collar with throat latch',
@@ -58,6 +62,7 @@ export const storeProducts = [
     img: '@/assets/imgs/men/m-tshirt2-big',
     price: 55.00,
     sex: 'm',
+    category: 'T-Shirts',
     info: [
       'Smooth fabric',
       'Stand collar with throat latch',
@@ -71,6 +76,7 @@ export const storeProducts = [
     img: '@/assets/imgs/men/m-tshirt3-big',
     price: 60.00,
     sex: 'm',
+    category: 'T-Shirts',
     info: [
       'Smooth fabric',
       'Stand collar with throat latch',
@@ -84,6 +90,7 @@ export const storeProducts = [
     img: '@/assets/imgs/men/m-jeans1-big',
     price: 20.00,
     sex: 'm',
+    category: 'Jeans',
     info: [
       'Smooth fabric',
       'Stand collar with throat latch',
@@ -97,6 +104,7 @@ export const storeProducts = [
     img: '@/assets/imgs/men/m-jeans2-big',
     price: 57.00,
     sex: 'm',
+    category: 'Jeans',
     info: [
       'Smooth fabric',
       'Stand collar with throat latch',
@@ -110,6 +118,7 @@ export const storeProducts = [
     img: '@/assets/imgs/men/m-jeans3-big',
     price: 70.00,
     sex: 'm',
+    category: 'Jeans',
     info: [
       'Smooth fabric',
       'Stand collar with throat latch',
@@ -123,6 +132,7 @@ export const storeProducts = [
     img: '@/assets/imgs/men/m-shirt1-big',
     price: 120.00,
     sex: 'm',
+    category: 'Shirts',
     info: [
       'Smooth fabric',
       'Stand collar with throat latch',
@@ -136,6 +146,7 @@ export const storeProducts = [
     img: '@/assets/imgs/men/m-shirt2-big',
     price: 90.00,
     sex: 'm',
+    category: 'Shirts',
     info: [
       'Smooth fabric',
       'Stand collar with throat latch',
@@ -149,6 +160,7 @@ export const storeProducts = [
     img: '@/assets/imgs/men/m-shoes1-big',
     price: 90.00,
     sex: 'm',
+    category: 'Shoes',
     info: [
       '50% Real Leather, 50% Textile upper',
       'Matte, distressed finish',
@@ -162,6 +174,7 @@ export const storeProducts = [
     img: '@/assets/imgs/women/w-dress1-big',
     price: 90.00,
     sex: 'w',
+    category: 'Dresses',
     info: [
       'Lightweight jersey',
       'Scoop neckline',
@@ -175,6 +188,7 @@ export const storeProducts = [
     img: '@/assets/imgs/women/w-dress2-big',
     price: 70.00,
     sex: 'w',
+    category: 'Dresses',
     info: [
       '50% Real Leather, 50% Textile upper',
       'Matte, distressed finish',
@@ -188,6 +202,7 @@ export const storeProducts = [
     img: '@/assets/imgs/women/w-jacket1-big',
     price: 70.00,
     sex: 'w',
+    category: 'Jackets',
     info: [
       '50% Real Leather, 50% Textile upper',
       'Matte, distressed finish',
@@ -201,6 +216,7 @@ export const storeProducts = [
     img: '@/assets/imgs/women/w-jacket2-big',
     price: 150.00,
     sex: 'w',
+    category: 'Jackets',
     info: [
       '50% Real Leather, 50% Textile upper',
       'Matte, distressed finish',
@@ -214,6 +230,7 @@ export const storeProducts = [
     img: '@/assets/imgs/women/w-jeans1-big',
     price: 30.00,
     sex: 'w',
+    category: 'Jeans',
     info: [
       '50% Real Leather, 50% Textile upper',
       'Matte, distressed finish',
@@ -227,6 +244,7 @@ export const storeProducts = [
     img: '@/assets/imgs/women/w-jeans2-big',
     price: 22.00,
     sex: 'w',
+    category: 'Jeans',
     info: [
       '50% Real Leather, 50% Textile upper',
       'Matte, distressed finish',
