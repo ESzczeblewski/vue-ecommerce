@@ -1,6 +1,5 @@
 <template>
-  <div>
-    <div>Home view</div>
+  <div class="home">
     <app-products></app-products>
   </div>
 </template>
@@ -17,4 +16,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.home {
+  background-color: rgb(255, 255, 255);
+  padding-top: 2em;
+}
 </style>

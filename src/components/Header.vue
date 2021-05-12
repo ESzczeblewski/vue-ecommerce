@@ -169,7 +169,7 @@ export default {
   &__brand {
     @include fluid-font(7vw, 1rem, 1.8rem, 35px);
 
-    color: $brand-color;
+    color: $main-font-color;
 
     @media screen and (min-width: 700px) {
       margin-right: 2em;
@@ -241,6 +241,7 @@ export default {
   flex-direction: column;
   width: 100%;
   margin-top: 1em;
+  z-index: 999;
 
   @media screen and (min-width: 700px) {
     flex-direction: row;
@@ -276,7 +277,7 @@ export default {
 
     a {
       text-align: left;
-      color: $brand-color;
+      color: $main-font-color;
       font-weight: 700;
       padding-top: 0.5em;
       padding-bottom: 0.5em;

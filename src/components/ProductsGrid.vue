@@ -1,6 +1,5 @@
 <template>
-  <div>
-    Elo
+  <div class="productsGrid">
     <app-product
       v-for="product in products"
       :key="product.id"
@@ -25,3 +24,12 @@ export default {
   },
 };
 </script>
+
+<style lang="scss" scoped>
+.productsGrid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 0;
+}
+</style>
