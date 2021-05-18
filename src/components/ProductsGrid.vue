@@ -1,7 +1,7 @@
 <template>
   <div class="productsGrid">
     <app-product
-      v-for="product in products"
+      v-for="product in orderedProducts"
       :key="product.id"
       :product="product"
     ></app-product>
@@ -17,7 +17,20 @@ export default {
   data() {
     return {
       products: storeProducts,
+      productsOrder: 'price',
     };
+  },
+  computed: {
+    orderedProducts() {
+      const originalProd = [...this.products];
+      if (this.$store.getters.sorting === 'priceHighToLow') {
+        return originalProd.sort((a, b) => b.price - a.price);
+      }
+      if (this.$store.getters.sorting === 'priceLowToHigh') {
+        return originalProd.sort((a, b) => a.price - b.price);
+      }
+      return this.products;
+    },
   },
   components: {
     appProduct: Product,

@@ -1,5 +1,4 @@
 /* eslint-disable global-require */
-/* eslint-disable import/prefer-default-export */
 export const storeProducts = [
   {
     id: 1,
