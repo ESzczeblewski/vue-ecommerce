@@ -10,7 +10,7 @@
 
 <script>
 import Product from './Product.vue';
-import { storeProducts } from '../storeProducts';
+import { storeProducts } from '../allProducts';
 
 export default {
   name: 'ProductsGrid',

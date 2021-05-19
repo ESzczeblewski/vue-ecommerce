@@ -15,6 +15,9 @@ export default {
     appProducts: ProductsGrid,
     appProductsSorting: ProductsSorting,
   },
+  beforeDestroy() {
+    this.$store.dispatch('RESET_SORTING');
+  },
 };
 </script>
 
