@@ -6,16 +6,15 @@ Vue.use(Vuex);
 const state = {
   sorting: 'default',
 };
-const mutations = {
+export const mutations = {
   setSorting(state, sorting) {
     state.sorting = sorting;
-    console.log(state.sorting);
   },
   resetSorting(state) {
     state.sorting = 'default';
   },
 };
-const actions = {
+export const actions = {
   SET_SORTING({ commit }, sorting) {
     commit('setSorting', sorting);
   },
@@ -24,7 +23,7 @@ const actions = {
   },
 };
 
-const getters = {
+export const getters = {
   sorting(state) {
     return state.sorting;
   },
