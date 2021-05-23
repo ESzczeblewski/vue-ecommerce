@@ -2,7 +2,7 @@
   <div class="product" @mouseenter="handleHover()" @mouseleave="handleHover()">
     <img :src="showBtn ? product.imgHover : product.img" alt="Product image" />
     <transition name="btn-slideUp">
-      <button v-if="showBtn" class="btn">
+      <button v-show="showBtn" class="btn">
         <img src="../assets/icons/add-to-cart.png" alt="" />
       </button>
     </transition>
