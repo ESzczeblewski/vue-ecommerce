@@ -42,7 +42,7 @@ export default {
 .product {
   position: relative;
   width: 90%;
-  max-width: 25em;
+  max-width: 21em;
   margin-right: 1em;
   margin-bottom: 2em;
   margin-left: 1em;
