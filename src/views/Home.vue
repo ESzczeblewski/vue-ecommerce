@@ -22,7 +22,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '../design';
+
 .home {
+  @include content-width;
+
   background-color: rgb(255, 255, 255);
   padding-top: 2em;
   display: flex;
