@@ -26,19 +26,15 @@
                     </button>
                   </template>
                   <app-dropdown-content>
-                    <router-link :to="{ name: 'MenProducts' }"
-                      >Shoes</router-link
-                    >
-                    <router-link :to="{ name: 'MenProducts' }"
+                    <router-link :to="{ name: 'men-shoes' }">Shoes</router-link>
+                    <router-link :to="{ name: 'men-shirts' }"
                       >Shirts</router-link
                     >
-                    <router-link :to="{ name: 'MenProducts' }"
+                    <router-link :to="{ name: 'men-jackets' }"
                       >Jackets</router-link
                     >
-                    <router-link :to="{ name: 'MenProducts' }"
-                      >Jeans</router-link
-                    >
-                    <router-link :to="{ name: 'MenProducts' }"
+                    <router-link :to="{ name: 'men-jeans' }">Jeans</router-link>
+                    <router-link :to="{ name: 'men-tshirts' }"
                       >T-Shirts</router-link
                     >
                   </app-dropdown-content>

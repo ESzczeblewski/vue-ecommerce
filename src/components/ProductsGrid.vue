@@ -1,3 +1,4 @@
+/* eslint-disable comma-dangle */
 <template>
   <div class="productsGrid">
     <app-product
@@ -20,16 +21,39 @@ export default {
       productsOrder: 'price',
     };
   },
+  props: {
+    sex: {
+      type: String,
+      required: true,
+      default: 'default',
+    },
+    category: {
+      type: String,
+      required: true,
+      default: 'default',
+    },
+  },
   computed: {
     orderedProducts() {
-      const originalProd = [...this.products];
+      const originalProd = [...this.products].filter((prod) => {
+        if (this.sex === 'default' && this.category === 'default') {
+          return prod;
+        }
+
+        if (prod.sex === this.sex && prod.category === this.category) {
+          return prod;
+        }
+
+        return false;
+      });
+
       if (this.$store.getters.sorting === 'priceHighToLow') {
         return originalProd.sort((a, b) => b.price - a.price);
       }
       if (this.$store.getters.sorting === 'priceLowToHigh') {
         return originalProd.sort((a, b) => a.price - b.price);
       }
-      return this.products;
+      return originalProd;
     },
   },
   components: {

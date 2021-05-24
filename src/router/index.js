@@ -11,9 +11,29 @@ export default new Router({
       component: () => import('@/views/Home'),
     },
     {
-      path: '/men',
-      name: 'MenProducts',
-      component: () => import('@/views/MenProducts'),
+      path: '/men-shoes',
+      name: 'men-shoes',
+      component: () => import('@/views/MenShoes'),
+    },
+    {
+      path: '/men-shirts',
+      name: 'men-shirts',
+      component: () => import('@/views/MenShirts'),
+    },
+    {
+      path: '/men-jackets',
+      name: 'men-jackets',
+      component: () => import('@/views/MenJackets'),
+    },
+    {
+      path: '/men-jeans',
+      name: 'men-jeans',
+      component: () => import('@/views/MenJeans'),
+    },
+    {
+      path: '/men-tshirts',
+      name: 'men-tshirts',
+      component: () => import('@/views/MenTShirts'),
     },
     {
       path: '/women',
