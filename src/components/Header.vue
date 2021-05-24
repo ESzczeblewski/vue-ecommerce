@@ -49,13 +49,13 @@
                     </button>
                   </template>
                   <app-dropdown-content>
-                    <router-link :to="{ name: 'WomenProducts' }"
+                    <router-link :to="{ name: 'women-dresses' }"
                       >Dresses</router-link
                     >
-                    <router-link :to="{ name: 'WomenProducts' }"
+                    <router-link :to="{ name: 'women-jeans' }"
                       >Jeans</router-link
                     >
-                    <router-link :to="{ name: 'WomenProducts' }"
+                    <router-link :to="{ name: 'women-jackets' }"
                       >Jackets</router-link
                     >
                   </app-dropdown-content>

@@ -36,9 +36,19 @@ export default new Router({
       component: () => import('@/views/MenTShirts'),
     },
     {
-      path: '/women',
-      name: 'WomenProducts',
-      component: () => import('@/views/WomenProducts'),
+      path: '/women-dresses',
+      name: 'women-dresses',
+      component: () => import('@/views/WomenDresses'),
+    },
+    {
+      path: '/women-jeans',
+      name: 'women-jeans',
+      component: () => import('@/views/WomenJeans'),
+    },
+    {
+      path: '/women-jackets',
+      name: 'women-jackets',
+      component: () => import('@/views/WomenJackets'),
     },
   ],
 });
