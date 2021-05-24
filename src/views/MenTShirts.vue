@@ -1,6 +1,6 @@
 <template>
-  <div class="menTShirts">
-    <app-products-sorting class="menTShirts__sorting"></app-products-sorting>
+  <div class="menTShirts view-default">
+    <app-products-sorting class="view-default__sorting"></app-products-sorting>
     <app-products :sex="'m'" :category="'T-Shirts'"></app-products>
   </div>
 </template>
@@ -23,19 +23,4 @@ export default {
 
 <style lang="scss" scoped>
 @import '../design';
-
-.menTShirts {
-  @include content-width;
-
-  background-color: rgb(255, 255, 255);
-  padding-top: 2em;
-  display: flex;
-  flex-direction: column;
-
-  &__sorting {
-    margin-left: auto;
-    margin-bottom: 1em;
-    padding-right: 1.5em;
-  }
-}
 </style>
