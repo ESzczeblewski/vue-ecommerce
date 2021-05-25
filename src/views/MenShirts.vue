@@ -1,19 +1,27 @@
 <template>
   <div class="menShirts view-default">
+    <app-category :category="category"></app-category>
     <app-products-sorting class="view-default__sorting"></app-products-sorting>
-    <app-products :sex="'m'" :category="'Shirts'"></app-products>
+    <app-products :sex="'m'" :category="category"></app-products>
   </div>
 </template>
 
 <script>
 import ProductsGrid from '../components/ProductsGrid.vue';
 import ProductsSorting from '../components/ProductsSorting.vue';
+import Category from '../components/Category.vue';
 
 export default {
   name: 'menShirts',
   components: {
     appProducts: ProductsGrid,
     appProductsSorting: ProductsSorting,
+    appCategory: Category,
+  },
+  data() {
+    return {
+      category: 'Shirts',
+    };
   },
   beforeDestroy() {
     this.$store.dispatch('RESET_SORTING');

@@ -25,12 +25,10 @@ export default {
     sex: {
       type: String,
       required: true,
-      default: 'default',
     },
     category: {
       type: String,
       required: true,
-      default: 'default',
     },
   },
   computed: {

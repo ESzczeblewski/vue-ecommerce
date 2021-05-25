@@ -1,7 +1,7 @@
 <template>
   <div class="home view-default">
     <app-products-sorting class="view-default__sorting"></app-products-sorting>
-    <app-products></app-products>
+    <app-products :sex="'default'" :category="'default'"></app-products>
   </div>
 </template>
 
