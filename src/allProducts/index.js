@@ -151,7 +151,7 @@ export const storeProducts = [
     ],
   },
   {
-    id: 17,
+    id: 35,
     title: 'Bell Flare Jeans In Clean Black With Thigh Rips',
     img: require('@/assets/imgs/women/w-jeans1-big.jpg'),
     imgHover: require('@/assets/imgs/women/w-jeans1-big2.jpg'),
@@ -166,7 +166,7 @@ export const storeProducts = [
     ],
   },
   {
-    id: 18,
+    id: 36,
     title: 'Bell Flare Jeans In Clean Black With Thigh Rips',
     img: require('@/assets/imgs/women/w-jeans2-big.jpg'),
     imgHover: require('@/assets/imgs/women/w-jeans2-big2.jpg'),
@@ -271,7 +271,7 @@ export const storeProducts = [
     ],
   },
   {
-    id: 16,
+    id: 34,
     title: 'Nylon Biker Jacket',
     img: require('@/assets/imgs/men/m-jacket2-big.jpg'),
     imgHover: require('@/assets/imgs/men/m-jacket2-big2.jpg'),
