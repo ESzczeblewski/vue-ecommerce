@@ -3,7 +3,7 @@
   <div class="products-grid">
     <div class="products-grid__products">
       <app-product
-        v-for="product in orderedProducts"
+        v-for="product in productsPerPage"
         :key="product.id"
         :product="product"
       ></app-product>
@@ -32,7 +32,6 @@ export default {
     return {
       products: storeProducts,
       productsOrder: 'price',
-      totalPages: Math.ceil(storeProducts.length / 10),
       start: 0,
       end: 10,
     };
@@ -56,27 +55,31 @@ export default {
   },
   computed: {
     orderedProducts() {
-      const originalProd = [...this.products]
-        .slice(this.start, this.end)
-        .filter((prod) => {
-          if (this.sex === 'default' && this.category === 'default') {
-            return prod;
-          }
+      const displayedProducts = [...this.products].filter((prod) => {
+        if (this.sex === 'default' && this.category === 'default') {
+          return prod;
+        }
 
-          if (prod.sex === this.sex && prod.category === this.category) {
-            return prod;
-          }
+        if (prod.sex === this.sex && prod.category === this.category) {
+          return prod;
+        }
 
-          return false;
-        });
+        return false;
+      });
 
       if (this.$store.getters.sorting === 'priceHighToLow') {
-        return originalProd.sort((a, b) => b.price - a.price);
+        return displayedProducts.sort((a, b) => b.price - a.price);
       }
       if (this.$store.getters.sorting === 'priceLowToHigh') {
-        return originalProd.sort((a, b) => a.price - b.price);
+        return displayedProducts.sort((a, b) => a.price - b.price);
       }
-      return originalProd;
+      return displayedProducts;
+    },
+    productsPerPage() {
+      return this.orderedProducts.slice(this.start, this.end);
+    },
+    totalPages() {
+      return Math.ceil(this.orderedProducts.length / 10);
     },
   },
   components: {
