@@ -67,6 +67,8 @@ export default {
   img {
     transform: scale(0.95);
     transition: transform 0.2s ease;
+    width: 90%;
+    margin: auto;
     margin-bottom: 0;
     cursor: pointer;
   }
