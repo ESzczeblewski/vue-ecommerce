@@ -41,8 +41,8 @@ export default {
 
 .product {
   position: relative;
-  width: 80%;
-  max-width: 19em;
+  width: 90%;
+  max-width: 21em;
   margin-right: 1em;
   margin-bottom: 2em;
   margin-left: 1em;
@@ -69,6 +69,7 @@ export default {
     transition: transform 0.2s ease;
     width: 100%;
     margin: auto;
+    margin-top: 0;
     margin-bottom: 0;
     cursor: pointer;
   }

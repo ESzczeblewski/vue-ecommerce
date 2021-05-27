@@ -33,7 +33,7 @@ export default {
       products: storeProducts,
       productsOrder: 'price',
       start: 0,
-      end: 10,
+      end: 8,
     };
   },
   props: {
@@ -48,8 +48,8 @@ export default {
   },
   methods: {
     handleClick(t) {
-      this.start = t * 10 - 10;
-      this.end = t * 10;
+      this.start = t * 8 - 8;
+      this.end = t * 8;
       window.scrollTo(0, 0);
     },
   },
@@ -79,7 +79,7 @@ export default {
       return this.orderedProducts.slice(this.start, this.end);
     },
     totalPages() {
-      return Math.ceil(this.orderedProducts.length / 10);
+      return Math.ceil(this.orderedProducts.length / 8);
     },
   },
   components: {
