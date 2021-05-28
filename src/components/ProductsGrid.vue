@@ -55,17 +55,21 @@ export default {
   },
   computed: {
     orderedProducts() {
-      const displayedProducts = [...this.products].filter((prod) => {
-        if (this.sex === 'default' && this.category === 'default') {
-          return prod;
-        }
+      const displayedProducts = [...this.products]
+        .filter((prod) => {
+          if (this.sex === 'default' && this.category === 'default') {
+            return prod;
+          }
 
-        if (prod.sex === this.sex && prod.category === this.category) {
-          return prod;
-        }
+          if (prod.sex === this.sex && prod.category === this.category) {
+            return prod;
+          }
 
-        return false;
-      });
+          return false;
+        })
+        .filter((prod) => {
+          return prod.title.toLowerCase().includes(this.$store.state.search);
+        });
 
       if (this.$store.getters.sorting === 'priceHighToLow') {
         return displayedProducts.sort((a, b) => b.price - a.price);

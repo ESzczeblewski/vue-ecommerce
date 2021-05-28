@@ -5,6 +5,7 @@ Vue.use(Vuex);
 
 const state = {
   sorting: 'default',
+  search: '',
 };
 export const mutations = {
   setSorting(state, sorting) {
@@ -13,6 +14,12 @@ export const mutations = {
   resetSorting(state) {
     state.sorting = 'default';
   },
+  setSearch(state, search) {
+    state.search = search;
+  },
+  resetSearch(state) {
+    state.search = '';
+  },
 };
 export const actions = {
   SET_SORTING({ commit }, sorting) {
@@ -20,6 +27,12 @@ export const actions = {
   },
   RESET_SORTING({ commit }) {
     commit('resetSorting');
+  },
+  SET_SEARCH({ commit }, search) {
+    commit('setSearch', search);
+  },
+  RESET_SEARCH({ commit }, search) {
+    commit('resetSearch', search);
   },
 };
 
