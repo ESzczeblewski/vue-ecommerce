@@ -11,6 +11,8 @@
 @import '../design/';
 
 .footer {
+  @include content-width;
+
   background-color: rgb(56, 56, 56);
   padding: 2em;
   color: #919191;
