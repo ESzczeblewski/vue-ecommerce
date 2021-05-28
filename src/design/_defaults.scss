@@ -8,6 +8,12 @@
   padding-top: 2em;
   display: flex;
   flex-direction: column;
+
+  &__sorting {
+    margin-left: auto;
+    margin-bottom: 2em;
+    padding-right: 4em;
+  }
 }
 
 .btn {
