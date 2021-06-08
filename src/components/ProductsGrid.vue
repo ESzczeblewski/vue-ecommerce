@@ -1,24 +1,26 @@
 /* eslint-disable comma-dangle */
 <template>
-  <div class="products-grid">
-    <div class="products-grid__products">
-      <app-product
-        v-for="product in productsPerPage"
-        :key="product.id"
-        :product="product"
-      ></app-product>
+  <transition name="productsSlideUp">
+    <div class="products-grid" v-if="showProducts">
+      <div class="products-grid__products">
+        <app-product
+          v-for="product in productsPerPage"
+          :key="product.id"
+          :product="product"
+        ></app-product>
+      </div>
+      <div class="products-grid__pagination">
+        <vue-paginate-al
+          :totalPage="totalPages"
+          customActiveBGColor="rgb(10, 152, 120)"
+          :nextText="'Next'"
+          :prevText="'Prev'"
+          :currentPage="1"
+          @btnClick="handleClick"
+        ></vue-paginate-al>
+      </div>
     </div>
-    <div class="products-grid__pagination">
-      <vue-paginate-al
-        :totalPage="totalPages"
-        customActiveBGColor="rgb(10, 152, 120)"
-        :nextText="'Next'"
-        :prevText="'Prev'"
-        :currentPage="1"
-        @btnClick="handleClick"
-      ></vue-paginate-al>
-    </div>
-  </div>
+  </transition>
 </template>
 
 <script>
@@ -34,6 +36,7 @@ export default {
       productsOrder: 'price',
       start: 0,
       end: 8,
+      showProducts: false,
     };
   },
   props: {
@@ -92,6 +95,12 @@ export default {
     appProduct: Product,
     VuePaginateAl,
   },
+
+  mounted() {
+    this.$nextTick(function () {
+      this.showProducts = true;
+    });
+  },
 };
 </script>
 
@@ -108,5 +117,15 @@ export default {
     justify-content: center;
     padding: 0;
   }
+}
+
+.productsSlideUp-enter-active,
+.productsSlideUp-leave-active {
+  transition: transform 0.5s 0.5s, opacity 0.5s 0.5s;
+}
+.productsSlideUp-enter,
+.productsSlideUp-leave-to {
+  transform: translateY(5em);
+  opacity: 0;
 }
 </style>
