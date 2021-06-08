@@ -321,8 +321,7 @@ export default {
 
 .navbarSlideDown-enter-active,
 .navbarSlideDown-leave-active {
-  transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.575) 0.5s,
-    opacity 1s 0.5s;
+  transition: transform 0.5s 0.5s, opacity 1s 0.5s;
 }
 .navbarSlideDown-enter,
 .navbarSlideDown-leave-to {
