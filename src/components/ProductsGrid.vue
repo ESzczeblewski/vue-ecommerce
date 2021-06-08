@@ -68,7 +68,9 @@ export default {
           return false;
         })
         .filter((prod) => {
-          return prod.title.toLowerCase().includes(this.$store.state.search);
+          return prod.title
+            .toLowerCase()
+            .includes(this.$store.state.search.toLowerCase());
         });
 
       if (this.$store.getters.sorting === 'priceHighToLow') {
