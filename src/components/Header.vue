@@ -1,6 +1,6 @@
 <template>
-  <nav class="navbar">
-    <transition name="navbarSlideDown">
+  <transition name="navbarSlideDown">
+    <nav class="navbar" v-if="showNav">
       <div class="container">
         <div class="container__row">
           <router-link class="navbar__brand" :to="{ name: 'home' }">
@@ -15,54 +15,48 @@
               <span class="hamburger__inner"></span>
             </span>
           </button>
-          <transition name="mainMenuFade">
-            <ul class="navbar__list" v-if="navOpen">
-              <li class="list__item">
-                <app-dropdown>
-                  <template slot="toggler">
-                    <button class="btn">
-                      Men
-                      <span class="caret"></span>
-                    </button>
-                  </template>
-                  <app-dropdown-content>
-                    <router-link :to="{ name: 'men-shoes' }">Shoes</router-link>
-                    <router-link :to="{ name: 'men-shirts' }"
-                      >Shirts</router-link
-                    >
-                    <router-link :to="{ name: 'men-jackets' }"
-                      >Jackets</router-link
-                    >
-                    <router-link :to="{ name: 'men-jeans' }">Jeans</router-link>
-                    <router-link :to="{ name: 'men-tshirts' }"
-                      >T-Shirts</router-link
-                    >
-                  </app-dropdown-content>
-                </app-dropdown>
-              </li>
-              <li class="list__item">
-                <app-dropdown>
-                  <template slot="toggler">
-                    <button class="btn">
-                      Women
-                      <span class="caret"></span>
-                    </button>
-                  </template>
-                  <app-dropdown-content>
-                    <router-link :to="{ name: 'women-dresses' }"
-                      >Dresses</router-link
-                    >
-                    <router-link :to="{ name: 'women-jeans' }"
-                      >Jeans</router-link
-                    >
-                    <router-link :to="{ name: 'women-jackets' }"
-                      >Jackets</router-link
-                    >
-                  </app-dropdown-content>
-                </app-dropdown>
-              </li>
-            </ul>
-          </transition>
+          <ul class="navbar__list" v-if="navOpen">
+            <li class="list__item">
+              <app-dropdown>
+                <template slot="toggler">
+                  <button class="btn">
+                    Men
+                    <span class="caret"></span>
+                  </button>
+                </template>
+                <app-dropdown-content>
+                  <router-link :to="{ name: 'men-shoes' }">Shoes</router-link>
+                  <router-link :to="{ name: 'men-shirts' }">Shirts</router-link>
+                  <router-link :to="{ name: 'men-jackets' }"
+                    >Jackets</router-link
+                  >
+                  <router-link :to="{ name: 'men-jeans' }">Jeans</router-link>
+                  <router-link :to="{ name: 'men-tshirts' }"
+                    >T-Shirts</router-link
+                  >
+                </app-dropdown-content>
+              </app-dropdown>
+            </li>
+            <li class="list__item">
+              <app-dropdown>
+                <template slot="toggler">
+                  <button class="btn">
+                    Women
+                    <span class="caret"></span>
+                  </button>
+                </template>
+                <app-dropdown-content>
+                  <router-link :to="{ name: 'women-dresses' }"
+                    >Dresses</router-link
+                  >
+                  <router-link :to="{ name: 'women-jeans' }">Jeans</router-link>
+                  <router-link :to="{ name: 'women-jackets' }"
+                    >Jackets</router-link
+                  >
+                </app-dropdown-content>
+              </app-dropdown>
+            </li>
+          </ul>
         </div>
         <div class="container__row">
           <div class="login__cart">
@@ -78,8 +72,8 @@
           </div>
         </div>
       </div>
-    </transition>
-  </nav>
+    </nav>
+  </transition>
 </template>
 
 <script>
@@ -95,6 +89,7 @@ export default {
       itemsInCart: 0,
       hamburgerActive: false,
       navOpen: false,
+      showNav: false,
     };
   },
 
@@ -119,6 +114,12 @@ export default {
   created() {
     this.handleMenuView();
     window.addEventListener('resize', this.handleMenuView);
+  },
+
+  mounted() {
+    this.$nextTick(function () {
+      this.showNav = true;
+    });
   },
 };
 </script>
@@ -318,12 +319,14 @@ export default {
   }
 }
 
-.mainMenuFade-enter-active,
-.mainMenuFade-leave-active {
-  transition: opacity 0.5s;
+.navbarSlideDown-enter-active,
+.navbarSlideDown-leave-active {
+  transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.575) 0.5s,
+    opacity 1s 0.5s;
 }
-.mainMenuFade-enter,
-.mainMenuFade-leave-to {
+.navbarSlideDown-enter,
+.navbarSlideDown-leave-to {
+  transform: translateY(-5em);
   opacity: 0;
 }
 </style>
