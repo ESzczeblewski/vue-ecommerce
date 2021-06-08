@@ -121,7 +121,7 @@ export default {
 
 .productsSlideUp-enter-active,
 .productsSlideUp-leave-active {
-  transition: transform 0.5s 0.5s, opacity 0.5s 0.5s;
+  transition: transform 0.5s 0.7s, opacity 0.5s 0.7s;
 }
 .productsSlideUp-enter,
 .productsSlideUp-leave-to {
