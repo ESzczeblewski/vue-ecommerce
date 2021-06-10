@@ -6,6 +6,8 @@ Vue.use(Vuex);
 const state = {
   sorting: 'default',
   search: '',
+  cartValue: 0,
+  cartItems: 0,
 };
 export const mutations = {
   setSorting(state, sorting) {
@@ -19,6 +21,10 @@ export const mutations = {
   },
   resetSearch(state) {
     state.search = '';
+  },
+  addToCart(state, price) {
+    state.cartValue += price;
+    state.cartItems += 1;
   },
 };
 export const actions = {
@@ -34,11 +40,20 @@ export const actions = {
   RESET_SEARCH({ commit }, search) {
     commit('resetSearch', search);
   },
+  ADD_TO_CART({ commit }, price) {
+    commit('addToCart', price);
+  },
 };
 
 export const getters = {
   sorting(state) {
     return state.sorting;
+  },
+  cartValue(state) {
+    return state.cartValue.toFixed(2);
+  },
+  cartItems(state) {
+    return state.cartItems;
   },
 };
 

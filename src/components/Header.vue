@@ -65,7 +65,7 @@
             </router-link>
             <router-link :to="{ name: 'cart' }">
               <button class="btn login__cart__cartbtn">
-                ${{ cartValue }} ({{ itemsInCart }})
+                ${{ this.cartValue }} ({{ this.cartItems }})
                 <img src="../assets/icons/shopping-cart.png" alt="" />
               </button>
             </router-link>
@@ -77,6 +77,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 import AppDropdown from './AppDropdown.vue';
 import AppDropdownContent from './AppDropdownContent.vue';
 
@@ -85,8 +86,6 @@ export default {
 
   data() {
     return {
-      cartValue: '0.00',
-      itemsInCart: 0,
       hamburgerActive: false,
       navOpen: false,
       showNav: false,
@@ -104,6 +103,10 @@ export default {
       }
       this.navOpen = window.innerWidth >= 700;
     },
+  },
+
+  computed: {
+    ...mapGetters(['cartValue', 'cartItems']),
   },
 
   components: {

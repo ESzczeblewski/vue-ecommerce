@@ -3,7 +3,11 @@
     <img :src="showBtn ? product.imgHover : product.img" alt="Product image" />
     <transition name="btn-slideUp">
       <button v-show="showBtn" class="btn">
-        <img src="../assets/icons/add-to-cart.png" alt="" />
+        <img
+          @click="ADD_TO_CART(product.price)"
+          src="../assets/icons/add-to-cart.png"
+          alt=""
+        />
       </button>
     </transition>
     <div class="wrapper">
@@ -15,6 +19,8 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
+
 export default {
   name: 'Product',
   props: ['product'],
@@ -24,6 +30,8 @@ export default {
     };
   },
   methods: {
+    ...mapActions(['ADD_TO_CART']),
+
     handleHover() {
       this.showBtn = !this.showBtn;
     },
