@@ -8,6 +8,7 @@ const state = {
   search: '',
   cartValue: 0,
   cartItems: 0,
+  cartItemsList: [],
 };
 export const mutations = {
   setSorting(state, sorting) {
@@ -22,9 +23,11 @@ export const mutations = {
   resetSearch(state) {
     state.search = '';
   },
-  addToCart(state, price) {
-    state.cartValue += price;
+  addToCart(state, product) {
+    state.cartValue += product.price;
     state.cartItems += 1;
+
+    state.cartItemsList.push(product);
   },
 };
 export const actions = {
@@ -40,8 +43,8 @@ export const actions = {
   RESET_SEARCH({ commit }, search) {
     commit('resetSearch', search);
   },
-  ADD_TO_CART({ commit }, price) {
-    commit('addToCart', price);
+  ADD_TO_CART({ commit }, product) {
+    commit('addToCart', product);
   },
 };
 
@@ -54,6 +57,9 @@ export const getters = {
   },
   cartItems(state) {
     return state.cartItems;
+  },
+  cartItemsList(state) {
+    return state.cartItemsList;
   },
 };
 

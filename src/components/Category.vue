@@ -20,10 +20,10 @@ export default {
 @import '../design';
 
 .category {
+  @include content-width;
+  margin-top: 0;
+  margin-bottom: 0;
   padding-bottom: 1em;
-  margin-bottom: 2em;
-  margin-left: 2em;
-  margin-right: 2em;
   border-bottom: 2px solid #eeeeee;
   &__info {
     color: $main-font-color;

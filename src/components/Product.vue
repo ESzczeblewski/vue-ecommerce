@@ -4,7 +4,7 @@
     <transition name="btn-slideUp">
       <button v-show="showBtn" class="btn">
         <img
-          @click="ADD_TO_CART(product.price)"
+          @click="ADD_TO_CART(product)"
           src="../assets/icons/add-to-cart.png"
           alt=""
         />
