@@ -24,10 +24,24 @@ export const mutations = {
     state.search = '';
   },
   addToCart(state, product) {
+    const item = state.cartItemsList.find((item) => item.product.id === product.id);
+
+    if (item) {
+      const itemIndex = state.cartItemsList.indexOf(item);
+
+      state.cartItemsList[itemIndex].product.price += state.cartItemsList[itemIndex].product.price;
+      state.cartItemsList[itemIndex].quantity += 1;
+      state.cartValue += product.price;
+      state.cartItems += 1;
+      return;
+    }
+
     state.cartValue += product.price;
     state.cartItems += 1;
 
-    state.cartItemsList.push(product);
+    const quantity = 1;
+
+    state.cartItemsList.push({ product, quantity });
   },
 };
 export const actions = {

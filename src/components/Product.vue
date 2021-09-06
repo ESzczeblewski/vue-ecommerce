@@ -4,7 +4,7 @@
     <transition name="btn-slideUp">
       <button v-show="showBtn" class="btn">
         <img
-          @click="ADD_TO_CART(product)"
+          @click="ADD_TO_CART(order)"
           src="../assets/icons/add-to-cart.png"
           alt=""
         />
@@ -27,6 +27,10 @@ export default {
   data() {
     return {
       showBtn: false,
+      order: {
+        id: this.product.id,
+        price: this.product.price,
+      },
     };
   },
   methods: {

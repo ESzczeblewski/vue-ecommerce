@@ -16,21 +16,6 @@ export const storeProducts = [
     ],
   },
   {
-    id: 12,
-    title: 'Boat Shoes in Leather',
-    img: require('@/assets/imgs/men/m-shoes1-big.jpg'),
-    imgHover: require('@/assets/imgs/men/m-shoes1-big2.jpg'),
-    price: 90.00,
-    sex: 'm',
-    category: 'Shoes',
-    info: [
-      '50% Real Leather, 50% Textile upper',
-      'Matte, distressed finish',
-      'Apron toe',
-      'Slip-on style',
-    ],
-  },
-  {
     id: 4,
     title: 'Longline Sleeveless T-Shirt With Dropped Armhole And Print',
     img: require('@/assets/imgs/men/m-tshirt1-big.jpg'),

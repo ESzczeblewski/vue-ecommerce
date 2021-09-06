@@ -5,13 +5,17 @@
       Your cart is currently empty
     </div>
     <div class="cart__products" v-if="this.cartItemsList.length">
-      <div v-for="product in this.cartItemsList" :key="product.id">
+      <div v-for="order in this.cartItemsList" :key="order.product.id">
         <button class="cart__products__delete">X</button>
         <div>
-          Product: <span>{{ product.title }}</span>
+          Product: <span>{{ order.product.title }}</span>
         </div>
         <div>
-          Price: <span>{{ product.price }}</span>
+          Price: <span>{{ order.product.price }}</span>
+        </div>
+        <div>
+          Quantity: {{ order.quantity }}
+          <button @click="ADD_TO_CART(order.product)">Add one moar</button>
         </div>
       </div>
     </div>
@@ -22,7 +26,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapActions, mapGetters } from 'vuex';
 import Category from '../components/Category.vue';
 
 export default {
@@ -34,6 +38,9 @@ export default {
     return {
       category: 'Cart',
     };
+  },
+  methods: {
+    ...mapActions(['ADD_TO_CART']),
   },
   computed: {
     ...mapGetters(['cartValue', 'cartItems', 'cartItemsList']),
