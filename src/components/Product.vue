@@ -30,6 +30,9 @@ export default {
       order: {
         id: this.product.id,
         price: this.product.price,
+        title: this.product.title,
+        value: this.product.price,
+        img: this.product.img,
       },
     };
   },
