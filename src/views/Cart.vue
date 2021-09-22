@@ -113,9 +113,19 @@ export default {
     border: 3px solid rgba(0, 0, 0, 0.1);
     padding: 1em;
     margin-top: 2em;
+    margin-bottom: 2em;
     display: flex;
     justify-content: space-between;
     text-align: right;
+
+    @media (min-width: 768px) {
+      max-width: 20em;
+      margin-right: 5%;
+    }
+
+    @media (min-width: 1100px) {
+      margin-right: 10%;
+    }
   }
 }
 
