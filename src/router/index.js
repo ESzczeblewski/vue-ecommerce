@@ -51,5 +51,10 @@ export default new Router({
       name: 'women-jackets',
       component: () => import('@/views/WomenJackets'),
     },
+    {
+      path: '/cart',
+      name: 'cart',
+      component: () => import('@/views/Cart'),
+    },
   ],
 });
