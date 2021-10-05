@@ -9,52 +9,52 @@ export default new Router({
     {
       path: '/',
       name: 'home',
-      component: () => import('@/views/Home'),
+      component: () => import('@/views/Home.vue'),
     },
     {
       path: '/men-shoes',
       name: 'men-shoes',
-      component: () => import('@/views/MenShoes'),
+      component: () => import('@/views/MenShoes.vue'),
     },
     {
       path: '/men-shirts',
       name: 'men-shirts',
-      component: () => import('@/views/MenShirts'),
+      component: () => import('@/views/MenShirts.vue'),
     },
     {
       path: '/men-jackets',
       name: 'men-jackets',
-      component: () => import('@/views/MenJackets'),
+      component: () => import('@/views/MenJackets.vue'),
     },
     {
       path: '/men-jeans',
       name: 'men-jeans',
-      component: () => import('@/views/MenJeans'),
+      component: () => import('@/views/MenJeans.vue'),
     },
     {
       path: '/men-tshirts',
       name: 'men-tshirts',
-      component: () => import('@/views/MenTShirts'),
+      component: () => import('@/views/MenTShirts.vue'),
     },
     {
       path: '/women-dresses',
       name: 'women-dresses',
-      component: () => import('@/views/WomenDresses'),
+      component: () => import('@/views/WomenDresses.vue'),
     },
     {
       path: '/women-jeans',
       name: 'women-jeans',
-      component: () => import('@/views/WomenJeans'),
+      component: () => import('@/views/WomenJeans.vue'),
     },
     {
       path: '/women-jackets',
       name: 'women-jackets',
-      component: () => import('@/views/WomenJackets'),
+      component: () => import('@/views/WomenJackets.vue'),
     },
     {
       path: '/cart',
       name: 'cart',
-      component: () => import('@/views/Cart'),
+      component: () => import('@/views/Cart.vue'),
     },
   ],
 });

@@ -1,5 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+import { doc, setDoc } from 'firebase/firestore';
+import { db } from '../firebaseInit';
 
 Vue.use(Vuex);
 
@@ -83,9 +85,11 @@ export const actions = {
   RESET_SEARCH({ commit }, search) {
     commit('resetSearch', search);
   },
-  ADD_TO_CART({ commit }, order) {
+  async ADD_TO_CART({ commit }, order) {
     commit('addToCart', order);
+    await setDoc(doc(db, 'cartItems', order.title), order, { merge: true });
   },
+
   REMOVE_FROM_CART({ commit }, product) {
     commit('removeFromCart', product);
   },

@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "core-js": "^3.6.5",
+    "firebase": "^9.1.0",
     "vue": "^2.6.11",
     "vue-clickaway": "^2.2.2",
     "vue-paginate-al": "^1.1.6",
@@ -25,6 +26,7 @@
     "@vue/test-utils": "^1.0.3",
     "babel-eslint": "^10.1.0",
     "babel-preset-stage-2": "^6.24.1",
+    "cache-loader": "^4.1.0",
     "eslint": "^6.7.2",
     "eslint-plugin-import": "^2.20.2",
     "eslint-plugin-vue": "^6.2.2",
