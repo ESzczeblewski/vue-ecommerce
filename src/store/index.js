@@ -1,6 +1,8 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import { doc, setDoc } from 'firebase/firestore';
+import {
+  doc, setDoc, getDoc, updateDoc, deleteDoc, increment,
+} from 'firebase/firestore';
 import { db } from '../firebaseInit';
 
 Vue.use(Vuex);
@@ -87,14 +89,43 @@ export const actions = {
   },
   async ADD_TO_CART({ commit }, order) {
     commit('addToCart', order);
-    await setDoc(doc(db, 'cartItems', order.title), order, { merge: true });
+    const docRef = doc(db, 'cartItems', order.title);
+    const docSnap = await getDoc(docRef);
+
+    await setDoc(docRef, order, { merge: true });
+
+    if (docSnap.data()) {
+      await updateDoc(docRef, {
+        quantity: increment(1),
+      });
+      return;
+    }
+
+    await updateDoc(docRef, {
+      quantity: 1,
+    });
   },
 
-  REMOVE_FROM_CART({ commit }, product) {
+  async REMOVE_FROM_CART({ commit }, product) {
     commit('removeFromCart', product);
+    const docRef = doc(db, 'cartItems', product.order.title);
+    await deleteDoc(docRef);
   },
-  REMOVE_ONE({ commit }, product) {
+  async REMOVE_ONE({ commit }, product) {
     commit('removeOne', product);
+    const docRef = doc(db, 'cartItems', product.title);
+    const { price } = product;
+    const docSnap = await getDoc(docRef);
+
+    if (docSnap.data().value === price) {
+      await deleteDoc(docRef);
+      return;
+    }
+
+    await updateDoc(docRef, {
+      value: increment(-price),
+      quantity: increment(-1),
+    });
   },
 };
 
