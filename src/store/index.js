@@ -73,6 +73,11 @@ export const mutations = {
       state.cartItemsList = newItemsList;
     }
   },
+  getFirebaseData(state, payload) {
+    state.cartItems += payload.quantity;
+    state.cartItemsList.push(payload);
+    state.cartValue += payload.order.value;
+  },
 };
 export const actions = {
   SET_SORTING({ commit }, sorting) {
@@ -92,7 +97,7 @@ export const actions = {
     const docRef = doc(db, 'cartItems', order.title);
     const docSnap = await getDoc(docRef);
 
-    await setDoc(docRef, order, { merge: true });
+    await setDoc(docRef, { order }, { merge: true });
 
     if (docSnap.data()) {
       await updateDoc(docRef, {
@@ -117,15 +122,19 @@ export const actions = {
     const { price } = product;
     const docSnap = await getDoc(docRef);
 
-    if (docSnap.data().value === price) {
+    if (docSnap.data().order.value === price) {
       await deleteDoc(docRef);
       return;
     }
 
     await updateDoc(docRef, {
-      value: increment(-price),
+      'order.value': increment(-price),
       quantity: increment(-1),
     });
+  },
+
+  GET_FIREBASE_DATA({ commit }, payload) {
+    commit('getFirebaseData', payload);
   },
 };
 

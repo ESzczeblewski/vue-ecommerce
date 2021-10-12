@@ -7,6 +7,10 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
+import { collection, getDocs } from 'firebase/firestore';
+import { db } from './firebaseInit';
+
 import Header from './components/Header.vue';
 import Footer from './components/Footer.vue';
 
@@ -15,6 +19,19 @@ export default {
     appHeader: Header,
     appFooter: Footer,
   },
+
+  computed: {
+    ...mapGetters(['cartValue', 'cartItems', 'cartItemsList']),
+  },
+
+  async created() {
+    await getDocs(collection(db, 'cities'));
+    const querySnapshot = await getDocs(collection(db, 'cartItems'));
+    querySnapshot.forEach((doc) => {
+      this.$store.dispatch('GET_FIREBASE_DATA', doc.data());
+    });
+  },
+  // ! tu je lipa w chu
 };
 </script>
 
