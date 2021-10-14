@@ -31,7 +31,6 @@ export default {
       this.$store.dispatch('GET_FIREBASE_DATA', doc.data());
     });
   },
-  // ! tu je lipa w chu
 };
 </script>
 
