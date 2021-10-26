@@ -61,7 +61,15 @@
         <div class="container__row">
           <div class="login__cart">
             <router-link :to="{ name: 'login' }">
-              <button class="btn login__cart__logbtn">Log in</button>
+              <button
+                v-if="!Object.keys(this.$store.state.userProfile).length"
+                class="btn login__cart__logbtn"
+              >
+                Log in
+              </button>
+              <button v-else @click="logout()" class="btn login__cart__logbtn">
+                Log out
+              </button>
             </router-link>
             <router-link :to="{ name: 'cart' }">
               <button class="btn login__cart__cartbtn">
@@ -97,11 +105,16 @@ export default {
       this.hamburgerActive = !this.hamburgerActive;
       this.navOpen = !this.navOpen;
     },
+
     handleMenuView() {
       if (this.hamburgerActive) {
         this.hamburgerActive = !this.hamburgerActive;
       }
       this.navOpen = window.innerWidth >= 700;
+    },
+
+    logout() {
+      this.$store.dispatch('LOGOUT');
     },
   },
 

@@ -3,7 +3,11 @@ import Vuex from 'vuex';
 import {
   doc, setDoc, getDoc, updateDoc, deleteDoc, increment,
 } from 'firebase/firestore';
+import {
+  getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut,
+} from 'firebase/auth';
 import { db } from '../firebaseInit';
+import router from '../router';
 
 Vue.use(Vuex);
 
@@ -13,6 +17,7 @@ const state = {
   cartValue: 0,
   cartItems: 0,
   cartItemsList: [],
+  userProfile: {},
 };
 export const mutations = {
   setSorting(state, sorting) {
@@ -78,6 +83,10 @@ export const mutations = {
     state.cartItemsList.push(payload);
     state.cartValue += payload.order.value;
   },
+
+  setUserProfile(state, val) {
+    state.userProfile = val;
+  },
 };
 export const actions = {
   SET_SORTING({ commit }, sorting) {
@@ -135,6 +144,52 @@ export const actions = {
 
   GET_FIREBASE_DATA({ commit }, payload) {
     commit('getFirebaseData', payload);
+  },
+
+  async LOGIN({ dispatch }, form) {
+    try {
+      const auth = getAuth();
+      const { user } = await signInWithEmailAndPassword(auth, form.email, form.password);
+
+      dispatch('FETCH_USER_PROFILE', user);
+    } catch (err) {
+      alert('Wrong credentials.');
+    }
+  },
+
+  async LOGOUT({ commit }) {
+    const auth = getAuth();
+    await signOut(auth);
+
+    commit('setUserProfile', {});
+    router.push('/');
+  },
+
+  async FETCH_USER_PROFILE({ commit }, user) {
+    // fetch user profile
+    const docRef = doc(db, 'usersCollection', `${user.uid}`);
+    const docSnap = await getDoc(docRef);
+
+    commit('setUserProfile', docSnap.data());
+
+    router.push('/buy');
+  },
+
+  async SIGNUP({ dispatch }, form) {
+    try {
+      // sign user up
+      const auth = getAuth();
+      const { user } = await createUserWithEmailAndPassword(auth, form.email, form.password);
+
+      await setDoc(doc(db, 'usersCollection', `${user.uid}`), {
+        name: form.name,
+        title: form.title,
+      });
+
+      dispatch('FETCH_USER_PROFILE', user);
+    } catch (err) {
+      alert('Wrong data.');
+    }
   },
 };
 
