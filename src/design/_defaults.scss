@@ -1,4 +1,21 @@
 @import './typography';
+@import './mixins';
+
+.view-default {
+  @include content-width;
+
+  background-color: rgb(255, 255, 255);
+  padding-top: 2em;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
+  &__sorting {
+    margin-left: auto;
+    margin-bottom: 2em;
+    padding-right: 4em;
+  }
+}
 
 .btn {
   font-family: $primary-font;
