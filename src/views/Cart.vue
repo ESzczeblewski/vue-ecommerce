@@ -61,6 +61,9 @@
     <div class="cart__total" v-if="this.cartItemsList.length">
       Total: <span>{{ this.cartValue }}</span>
     </div>
+    <router-link :to="{ name: 'buy' }">
+      <button class="btn cart__checkout-btn">Proceed to checkout.</button>
+    </router-link>
   </div>
 </template>
 
@@ -117,6 +120,33 @@ export default {
     display: flex;
     justify-content: space-between;
     text-align: right;
+
+    @media (min-width: 768px) {
+      max-width: 20em;
+      margin-right: 5%;
+    }
+
+    @media (min-width: 1100px) {
+      margin-right: 10%;
+    }
+  }
+
+  &__checkout-btn {
+    @include content-width;
+    font-weight: $primary-bold;
+    color: rgb(255, 255, 255);
+    background-color: rgb(10, 152, 120);
+    border: 3px solid rgb(10, 152, 120);
+    border-radius: 0.4em;
+    padding: 1em;
+    display: flex;
+    justify-content: center;
+    transition: all 0.3s ease;
+
+    &:hover {
+      color: rgb(10, 152, 120);
+      background-color: rgb(255, 255, 255);
+    }
 
     @media (min-width: 768px) {
       max-width: 20em;

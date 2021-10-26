@@ -3,7 +3,9 @@ import Vuex from 'vuex';
 import {
   doc, setDoc, getDoc, updateDoc, deleteDoc, increment,
 } from 'firebase/firestore';
-import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth';
+import {
+  getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut,
+} from 'firebase/auth';
 import { db } from '../firebaseInit';
 import router from '../router';
 
@@ -145,12 +147,25 @@ export const actions = {
   },
 
   async LOGIN({ dispatch }, form) {
-    // sign user in
-    const auth = getAuth();
-    const { user } = await signInWithEmailAndPassword(auth, form.email, form.password);
+    try {
+      const auth = getAuth();
+      const { user } = await signInWithEmailAndPassword(auth, form.email, form.password);
 
-    // fetch user profile and set in state
-    dispatch('FETCH_USER_PROFILE', user);
+      // fetch user profile and set in state
+      dispatch('FETCH_USER_PROFILE', user);
+    } catch (err) {
+      alert('Wrong credentials.');
+    }
+    // sign user in
+  },
+
+  async LOGOUT({ commit }) {
+    const auth = getAuth();
+    await signOut(auth);
+
+    // clear userProfile and redirect to /login
+    commit('setUserProfile', {});
+    router.push('/');
   },
 
   async FETCH_USER_PROFILE({ commit }, user) {
@@ -162,22 +177,26 @@ export const actions = {
     commit('setUserProfile', docSnap.data());
 
     // change route to dashboard
-    router.push('/cart');
+    router.push('/buy');
   },
 
   async SIGNUP({ dispatch }, form) {
-    // sign user up
-    const auth = getAuth();
-    const { user } = await createUserWithEmailAndPassword(auth, form.email, form.password);
+    try {
+      // sign user up
+      const auth = getAuth();
+      const { user } = await createUserWithEmailAndPassword(auth, form.email, form.password);
 
-    // create user profile object in userCollections
-    await setDoc(doc(db, 'usersCollection', `${user.uid}`), {
-      name: form.name,
-      title: form.title,
-    });
+      // create user profile object in userCollections
+      await setDoc(doc(db, 'usersCollection', `${user.uid}`), {
+        name: form.name,
+        title: form.title,
+      });
 
-    // fetch user profile and set in state
-    dispatch('FETCH_USER_PROFILE', user);
+      // fetch user profile and set in state
+      dispatch('FETCH_USER_PROFILE', user);
+    } catch (err) {
+      alert('Wrong data.');
+    }
   },
 };
 
