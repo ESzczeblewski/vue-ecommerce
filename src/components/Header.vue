@@ -68,7 +68,7 @@
                 Log in
               </button>
               <button v-else @click="logout()" class="btn login__cart__logbtn">
-                Logout
+                Log out
               </button>
             </router-link>
             <router-link :to="{ name: 'cart' }">
