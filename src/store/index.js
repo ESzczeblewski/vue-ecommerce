@@ -151,19 +151,16 @@ export const actions = {
       const auth = getAuth();
       const { user } = await signInWithEmailAndPassword(auth, form.email, form.password);
 
-      // fetch user profile and set in state
       dispatch('FETCH_USER_PROFILE', user);
     } catch (err) {
       alert('Wrong credentials.');
     }
-    // sign user in
   },
 
   async LOGOUT({ commit }) {
     const auth = getAuth();
     await signOut(auth);
 
-    // clear userProfile and redirect to /login
     commit('setUserProfile', {});
     router.push('/');
   },
@@ -173,10 +170,8 @@ export const actions = {
     const docRef = doc(db, 'usersCollection', `${user.uid}`);
     const docSnap = await getDoc(docRef);
 
-    // set user profile in state
     commit('setUserProfile', docSnap.data());
 
-    // change route to dashboard
     router.push('/buy');
   },
 
@@ -186,13 +181,11 @@ export const actions = {
       const auth = getAuth();
       const { user } = await createUserWithEmailAndPassword(auth, form.email, form.password);
 
-      // create user profile object in userCollections
       await setDoc(doc(db, 'usersCollection', `${user.uid}`), {
         name: form.name,
         title: form.title,
       });
 
-      // fetch user profile and set in state
       dispatch('FETCH_USER_PROFILE', user);
     } catch (err) {
       alert('Wrong data.');
