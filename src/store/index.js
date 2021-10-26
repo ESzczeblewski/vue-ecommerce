@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import {
-  doc, setDoc, getDoc, updateDoc, deleteDoc, increment,
+  doc, setDoc, getDoc,
 } from 'firebase/firestore';
 import {
   getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut,
@@ -42,6 +42,10 @@ export const mutations = {
       state.cartItemsList[itemIndex].quantity += 1;
       state.cartValue += initialPrice;
       state.cartItems += 1;
+
+      localStorage.clear();
+      localStorage.setItem('cartItemsList', JSON.stringify(state.cartItemsList));
+
       return;
     }
 
@@ -51,6 +55,9 @@ export const mutations = {
     const quantity = 1;
 
     state.cartItemsList.push({ order, quantity });
+
+    localStorage.clear();
+    localStorage.setItem('cartItemsList', JSON.stringify(state.cartItemsList));
   },
   removeFromCart(state, order) {
     const deletedProduct = state.cartItemsList.find((item) => item.order.id === order.order.id);
@@ -61,6 +68,9 @@ export const mutations = {
     state.cartItemsList = newItemsList;
     state.cartValue -= deletedProduct.order.value;
     state.cartItems -= deletedProduct.quantity;
+
+    localStorage.clear();
+    localStorage.setItem('cartItemsList', JSON.stringify(state.cartItemsList));
   },
   removeOne(state, order) {
     const product = state.cartItemsList.find((item) => item.order.id === order.id);
@@ -77,8 +87,11 @@ export const mutations = {
         .filter((item) => item.order.id !== product.order.id);
       state.cartItemsList = newItemsList;
     }
+
+    localStorage.clear();
+    localStorage.setItem('cartItemsList', JSON.stringify(state.cartItemsList));
   },
-  getFirebaseData(state, payload) {
+  getStorageData(state, payload) {
     state.cartItems += payload.quantity;
     state.cartItemsList.push(payload);
     state.cartValue += payload.order.value;
@@ -103,47 +116,17 @@ export const actions = {
   },
   async ADD_TO_CART({ commit }, order) {
     commit('addToCart', order);
-    const docRef = doc(db, 'cartItems', order.title);
-    const docSnap = await getDoc(docRef);
-
-    await setDoc(docRef, { order }, { merge: true });
-
-    if (docSnap.data()) {
-      await updateDoc(docRef, {
-        quantity: increment(1),
-      });
-      return;
-    }
-
-    await updateDoc(docRef, {
-      quantity: 1,
-    });
   },
 
   async REMOVE_FROM_CART({ commit }, product) {
     commit('removeFromCart', product);
-    const docRef = doc(db, 'cartItems', product.order.title);
-    await deleteDoc(docRef);
   },
   async REMOVE_ONE({ commit }, product) {
     commit('removeOne', product);
-    const docRef = doc(db, 'cartItems', product.title);
-    const { price } = product;
-    const docSnap = await getDoc(docRef);
-
-    if (docSnap.data().order.value === price) {
-      await deleteDoc(docRef);
-      return;
-    }
-
-    await updateDoc(docRef, {
-      'order.value': increment(-price),
-      quantity: increment(-1),
-    });
   },
 
-  GET_FIREBASE_DATA({ commit }, payload) {
-    commit('getFirebaseData', payload);
+  GET_STORAGE_DATA({ commit }, payload) {
+    commit('getStorageData', payload);
   },
 
   async LOGIN({ dispatch }, form) {
@@ -166,7 +149,6 @@ export const actions = {
   },
 
   async FETCH_USER_PROFILE({ commit }, user) {
-    // fetch user profile
     const docRef = doc(db, 'usersCollection', `${user.uid}`);
     const docSnap = await getDoc(docRef);
 
@@ -177,7 +159,6 @@ export const actions = {
 
   async SIGNUP({ dispatch }, form) {
     try {
-      // sign user up
       const auth = getAuth();
       const { user } = await createUserWithEmailAndPassword(auth, form.email, form.password);
 

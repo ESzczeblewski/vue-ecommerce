@@ -15,7 +15,7 @@
         </tr>
       </thead>
       <tbody class="content">
-        <tr v-for="order in this.cartItemsList" :key="order.id">
+        <tr v-for="order in this.cartItemsList" :key="order.order.id">
           <td>
             <button
               class="content__delete content__text-pos"
@@ -95,11 +95,14 @@ export default {
 
 .cart {
   &__empty {
+    @include content-width;
     background-color: rgb(61, 156, 210);
     color: rgb(255, 255, 255);
     line-height: 1.4rem;
     padding: 1em 2.5em;
-    margin: 2em;
+    margin: auto;
+    margin-top: 2em;
+    margin-bottom: 2em;
     display: flex;
     align-items: center;
   }
