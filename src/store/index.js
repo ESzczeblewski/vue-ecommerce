@@ -104,6 +104,7 @@ export const mutations = {
 export const actions = {
   SET_SORTING({ commit }, sorting) {
     commit('setSorting', sorting);
+    console.log(sorting);
   },
   RESET_SORTING({ commit }) {
     commit('resetSorting');
