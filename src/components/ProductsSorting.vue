@@ -1,9 +1,4 @@
 <template>
-  <!-- <ul class="dropdown" aria-label="sorting">
-    <li @click="SET_SORTING('default')">Default</li>
-    <li @click="SET_SORTING('priceLowToHigh')">Price low to high</li>
-    <li @click="SET_SORTING('priceHighToLow')">Price high to low</li>
-  </ul> -->
   <ul>
     <li>
       Set sorting
@@ -42,28 +37,6 @@ export default {
   },
   computed: {
     ...mapState(['sorting']),
-
-    //   activeDefault: () => {
-    //     if (this.sorting === 'default') {
-    //       return 'active';
-    //     }
-
-    //     return '';
-    //   },
-    //   activeLowToHigh: () => {
-    //     if (this.sorting === 'priceLowToHigh') {
-    //       return 'active';
-    //     }
-
-    //     return '';
-    //   },
-    //   activeHighToLow: () => {
-    //     if (this.sorting === 'default') {
-    //       return 'active';
-    //     }
-
-    //     return '';
-    //   },
   },
 };
 </script>
@@ -72,6 +45,7 @@ export default {
 @import '../design';
 
 ul {
+  margin-top: 1em;
   background: #fff;
   list-style: none;
   margin: 0;
