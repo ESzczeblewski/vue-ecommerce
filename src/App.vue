@@ -27,9 +27,11 @@ export default {
   async created() {
     const data = JSON.parse(localStorage.getItem('cartItemsList'));
 
-    data.forEach((el) => {
-      this.$store.dispatch('GET_STORAGE_DATA', el);
-    });
+    if (data) {
+      data.forEach((el) => {
+        this.$store.dispatch('GET_STORAGE_DATA', el);
+      });
+    }
   },
 };
 </script>
