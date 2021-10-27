@@ -61,7 +61,7 @@
     <div class="cart__total" v-if="this.cartItemsList.length">
       Total: <span>{{ this.cartValue }}</span>
     </div>
-    <router-link :to="{ name: 'buy' }">
+    <router-link v-if="this.cartItems" :to="{ name: 'buy' }">
       <button class="btn cart__checkout-btn">Proceed to checkout.</button>
     </router-link>
   </div>
