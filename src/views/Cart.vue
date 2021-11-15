@@ -15,7 +15,7 @@
         </tr>
       </thead>
       <tbody class="content">
-        <tr v-for="order in this.cartItemsList" :key="order.id">
+        <tr v-for="order in this.cartItemsList" :key="order.order.id">
           <td>
             <button
               class="content__delete content__text-pos"
@@ -61,6 +61,9 @@
     <div class="cart__total" v-if="this.cartItemsList.length">
       Total: <span>{{ this.cartValue }}</span>
     </div>
+    <router-link v-if="this.cartItems" :to="{ name: 'buy' }">
+      <button class="btn cart__checkout-btn">Proceed to checkout.</button>
+    </router-link>
   </div>
 </template>
 
@@ -92,11 +95,14 @@ export default {
 
 .cart {
   &__empty {
+    @include content-width;
     background-color: rgb(61, 156, 210);
     color: rgb(255, 255, 255);
     line-height: 1.4rem;
     padding: 1em 2.5em;
-    margin: 2em;
+    margin: auto;
+    margin-top: 2em;
+    margin-bottom: 2em;
     display: flex;
     align-items: center;
   }
@@ -117,6 +123,33 @@ export default {
     display: flex;
     justify-content: space-between;
     text-align: right;
+
+    @media (min-width: 768px) {
+      max-width: 20em;
+      margin-right: 5%;
+    }
+
+    @media (min-width: 1100px) {
+      margin-right: 10%;
+    }
+  }
+
+  &__checkout-btn {
+    @include content-width;
+    font-weight: $primary-bold;
+    color: rgb(255, 255, 255);
+    background-color: rgb(10, 152, 120);
+    border: 3px solid rgb(10, 152, 120);
+    border-radius: 0.4em;
+    padding: 1em;
+    display: flex;
+    justify-content: center;
+    transition: all 0.3s ease;
+
+    &:hover {
+      color: rgb(10, 152, 120);
+      background-color: rgb(255, 255, 255);
+    }
 
     @media (min-width: 768px) {
       max-width: 20em;
