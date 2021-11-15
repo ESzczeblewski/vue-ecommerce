@@ -1,6 +1,21 @@
 <template>
   <div class="product" @mouseenter="handleHover()" @mouseleave="handleHover()">
-    <img :src="showBtn ? product.imgHover : product.img" alt="Product image" />
+    <router-link
+      :to="{
+        name: 'productDetails',
+        params: { product: product, name: product.title },
+      }"
+    >
+      <img
+        :src="showBtn ? product.imgHover : product.img"
+        alt="Product image"
+      />
+      <div class="wrapper">
+        <div class="product__category">{{ product.category }}</div>
+        <div class="product__title">{{ product.title }}</div>
+        <div class="product__price">${{ displayPrice }}</div>
+      </div>
+    </router-link>
     <transition name="btn-slideUp">
       <button v-show="showBtn" class="btn">
         <img
@@ -10,11 +25,6 @@
         />
       </button>
     </transition>
-    <div class="wrapper">
-      <div class="product__category">{{ product.category }}</div>
-      <div class="product__title">{{ product.title }}</div>
-      <div class="product__price">${{ displayPrice }}</div>
-    </div>
   </div>
 </template>
 

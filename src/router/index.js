@@ -68,6 +68,13 @@ const routes = [
       requiresAuth: true,
     },
   },
+  {
+    path: '/product/:name',
+    name: 'productDetails',
+    component: () => import('@/views/ProductDetails.vue'),
+    params: true,
+    props: true,
+  },
 ];
 
 const router = new VueRouter({
